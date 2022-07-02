@@ -18,7 +18,7 @@ data class Transactions (
 @Entity
     (foreignKeys = [ForeignKey(entity = Transactions::class,
     parentColumns = arrayOf("fkUser"),
-    childColumns = arrayOf("pkId"),
+    childColumns = arrayOf("userId"),
     onDelete = ForeignKey.CASCADE)]
 )
 data class Users (

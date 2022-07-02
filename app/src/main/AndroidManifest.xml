@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DebitsAndCredits">
         <activity
+            android:name=".ManageTransactions"
+            android:exported="false" />
+        <activity
+            android:name=".History"
+            android:exported="false" />
+        <activity
+            android:name=".ManageUsers"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

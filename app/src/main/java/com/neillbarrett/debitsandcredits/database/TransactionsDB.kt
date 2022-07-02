@@ -6,10 +6,12 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.neillbarrett.debitsandcredits.Transactions
+import com.neillbarrett.debitsandcredits.Types
+import com.neillbarrett.debitsandcredits.Users
 import kotlinx.coroutines.internal.synchronized
 
 @Database(
-    entities = [Transactions::class],
+    entities = [Transactions::class, Users::class, Types::class],
     version = 1,
     exportSchema = true
 )
