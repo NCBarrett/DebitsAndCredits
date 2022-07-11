@@ -5,13 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-//import com.neillbarrett.debitsandcredits.Types
-
-//import kotlinx.coroutines.internal.synchronized
-//import java.sql.Types
 
 @Database(
-    entities = [Transactions::class, Users::class], //, Types::class
+    entities = [Transactions::class, Users::class],
     version = 1,
     exportSchema = true
 )

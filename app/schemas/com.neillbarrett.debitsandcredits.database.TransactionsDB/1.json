@@ -1,0 +1,102 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "89102962cfa6d9058a437316159b8cbb",
+    "entities": [
+      {
+        "tableName": "t_Transactions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`transId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `fkUserId` INTEGER NOT NULL, `Date` INTEGER NOT NULL, `fkPaymentTypeId` INTEGER NOT NULL, `Debit` INTEGER, `Credit` INTEGER, `Balance` INTEGER NOT NULL, `Comments` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "transId",
+            "columnName": "transId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fkUserId",
+            "columnName": "fkUserId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Date",
+            "columnName": "Date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fkPaymentTypeId",
+            "columnName": "fkPaymentTypeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Debit",
+            "columnName": "Debit",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Credit",
+            "columnName": "Credit",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Balance",
+            "columnName": "Balance",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Comments",
+            "columnName": "Comments",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "transId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Users",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pkUserId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `UserName` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "pkUserId",
+            "columnName": "pkUserId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userName",
+            "columnName": "UserName",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "pkUserId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '89102962cfa6d9058a437316159b8cbb')"
+    ]
+  }
+}
