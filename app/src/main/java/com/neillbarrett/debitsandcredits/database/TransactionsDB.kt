@@ -7,20 +7,20 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(
-    entities = [Transactions::class, Users::class],
+    entities = [DebitsAndCreditsDB::class, Users::class],
     version = 1,
     exportSchema = true
 )
 @TypeConverters(Converters::class)
-abstract class TransactionsDB : RoomDatabase() {
+abstract class DebitsAndCreditDB : RoomDatabase() {
 
     abstract fun Dao(): Dao
 
     companion object {
         @Volatile
-        private var INSTANCE: TransactionsDB? = null
+        private var INSTANCE: DebitsAndCreditDB? = null
 
-        fun getDatabase(context: Context): TransactionsDB {
+        fun getDatabase(context: Context): DebitsAndCreditsDB {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             if (INSTANCE == null) {
@@ -33,10 +33,10 @@ abstract class TransactionsDB : RoomDatabase() {
             return INSTANCE!!
         }
 
-        private fun buildDatabase(context: Context): TransactionsDB {
+        private fun buildDatabase(context: Context): DebitsAndCreditsDB {
             return Room.databaseBuilder(
                 context.applicationContext,
-                TransactionsDB::class.java,
+                DebitsAndCreditsDB::class.java,
                 "transaction_database"
             ).build()
         }

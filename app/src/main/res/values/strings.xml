@@ -4,4 +4,5 @@
     <string name="update_transactions">Update Transactions</string>
     <string name="update_users">Update Users</string>
     <string name="check_history">Check History</string>
+    <string name="list_of_users">List Of Users:</string>
 </resources>
