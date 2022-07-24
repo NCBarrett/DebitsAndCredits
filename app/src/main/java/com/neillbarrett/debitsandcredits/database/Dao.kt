@@ -11,11 +11,12 @@ interface Dao {
 
     // User queries
     @Insert
-    suspend fun addUser(user: List<t_Users>)
+    suspend fun insertUser(user: UsersTable)
+    //suspend fun addUser(user: List<UsersTable>)
 
     @Transaction
-    @Query("SELECT * FROM t_Users ORDER BY UserName ASC")
-    fun getAllUsers(): List<t_Users>
+    @Query("SELECT * FROM UsersTable ORDER BY UserName ASC")
+    fun getAllUsers(): Flow<List<UsersTable>>
 
     // Payment type queries
     /*@Insert

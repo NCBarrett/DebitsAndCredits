@@ -7,38 +7,32 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(
-    entities = [DebitsAndCreditsDB::class, Users::class],
+    entities = [DebitsAndCreditsTable::class, UsersTable::class],
     version = 1,
     exportSchema = true
 )
 @TypeConverters(Converters::class)
-abstract class DebitsAndCreditDB : RoomDatabase() {
+abstract class DebitsAndCreditsDB : RoomDatabase() {
 
     abstract fun Dao(): Dao
 
     companion object {
         @Volatile
-        private var INSTANCE: DebitsAndCreditDB? = null
+        private var INSTANCE: DebitsAndCreditsDB ? = null
 
         fun getDatabase(context: Context): DebitsAndCreditsDB {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
-            if (INSTANCE == null) {
-                kotlin.synchronized(this){
-                    // Pass the database to the INSTANCE
-                    INSTANCE = buildDatabase(context)
-                }
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    DebitsAndCreditsDB::class.java,
+                    "DebitsAndCredits"
+                ).build()
+                INSTANCE = instance
+                // return instance
+                instance
             }
-            //Return database.
-            return INSTANCE!!
-        }
-
-        private fun buildDatabase(context: Context): DebitsAndCreditsDB {
-            return Room.databaseBuilder(
-                context.applicationContext,
-                DebitsAndCreditsDB::class.java,
-                "transaction_database"
-            ).build()
         }
     }
 }
