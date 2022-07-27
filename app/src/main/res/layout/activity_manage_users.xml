@@ -20,12 +20,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/list_of_users"
+            android:textAlignment="center"
             android:textSize="20sp" />
 
         <ListView
             android:id="@+id/lv_ListOfUsers"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/activity_list_of_users" />
 
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_UserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="@string/type_name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_AddUser"
+        app:layout_constraintStart_toStartOf="@+id/btn_AddUser"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_AddUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/add_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linLay_users"
+        app:layout_constraintTop_toBottomOf="@+id/et_UserName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.neillbarrett.debitsandcredits.database
 
 import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
 import java.sql.Date
 
 @Entity (tableName = "DebitsAndCreditsTable")
@@ -16,21 +17,26 @@ data class DebitsAndCreditsTable (
 )
 
 /* MAPPING USERS LOOKUP TABLE TO TRANSACTIONS TABLE */
-@Entity (tableName = "UsersTable")
+@Entity (tableName = "UsersTable",
+    foreignKeys = [ForeignKey(
+        entity = DebitsAndCreditsTable::class,
+        parentColumns = ["fkUserId"],
+        childColumns = ["pkUserId"],
+        onDelete = CASCADE)])
 data class UsersTable (
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo (name = "pkUserId") val pkUserId: Int,
     @ColumnInfo (name = "UserName") val userName: String
         )
 
-data class UserAndTrans (
+/**data class UserAndTrans (
     @Embedded val user: UsersTable,
     @Relation(
         parentColumn = "pkUserId",
         entityColumn = "fkUserId"
     )
     val trans: List<DebitsAndCreditsDB>
-)
+)*/
 /* MAPPING USERS LOOKUP TABLE TO TRANSACTIONS TABLE */
 
 /* MAPPING PAYMENT TYPE LOOKUP TABLE TO TRANSACTIONS TABLE */
