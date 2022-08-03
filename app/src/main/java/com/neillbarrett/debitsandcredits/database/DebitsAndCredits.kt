@@ -4,39 +4,44 @@ import androidx.room.*
 import androidx.room.ForeignKey.CASCADE
 import java.sql.Date
 
-@Entity (tableName = "DebitsAndCreditsTable")
+@Entity (tableName = "DebitsAndCreditsTable",
+    indices = [Index(value = ["fkUserId", "fkPaymentTypeId"], unique = true),
+                Index(value = ["transId"])]
+    )
 data class DebitsAndCreditsTable (
-    @PrimaryKey (autoGenerate = true) val transId: Int,
-    @ColumnInfo (name = "fkUserId") val fkUserId: Int,
+    @PrimaryKey (autoGenerate = true)
+    @ColumnInfo (name = "transId")
+    val transId: Long,
+    @ColumnInfo (name = "fkUserId", index = true) val fkUserId: Long,
     @ColumnInfo (name = "Date") val Date: Date,
-    @ColumnInfo (name = "fkPaymentTypeId") val fkPaymentTypeId: Long,
+    @ColumnInfo (name = "fkPaymentTypeId", index = true) val fkPaymentTypeId: Long /* ,
     @ColumnInfo (name = "Debit") val Debit: Long?,
     @ColumnInfo (name = "Credit") val Credit: Long?,
     @ColumnInfo (name = "Balance") val Balance: Long,
-    @ColumnInfo (name = "Comments") val Comments: String
+    @ColumnInfo (name = "Comments") val Comments: String */
 )
 
 /* MAPPING USERS LOOKUP TABLE TO TRANSACTIONS TABLE */
-@Entity (tableName = "UsersTable",
+@Entity (tableName = "UsersTable" /*,
     foreignKeys = [ForeignKey(
         entity = DebitsAndCreditsTable::class,
         parentColumns = ["fkUserId"],
         childColumns = ["pkUserId"],
-        onDelete = CASCADE)])
+        onDelete = CASCADE)] */)
 data class UsersTable (
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo (name = "pkUserId") val pkUserId: Int,
     @ColumnInfo (name = "UserName") val userName: String
         )
 
-/**data class UserAndTrans (
+/* data class UserAndTrans (
     @Embedded val user: UsersTable,
     @Relation(
         parentColumn = "pkUserId",
         entityColumn = "fkUserId"
     )
     val trans: List<DebitsAndCreditsDB>
-)*/
+) */
 /* MAPPING USERS LOOKUP TABLE TO TRANSACTIONS TABLE */
 
 /* MAPPING PAYMENT TYPE LOOKUP TABLE TO TRANSACTIONS TABLE */

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.neillbarrett.debitsandcredits.database.UsersTable
 
-abstract class UserListAdapter : ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(UsersComparator()) {
+class UserListAdapter : ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(UsersComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder.create(parent)

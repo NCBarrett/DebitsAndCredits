@@ -5,6 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.sqlite.db.SupportSQLiteDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Database(
     entities = [DebitsAndCreditsTable::class, UsersTable::class],
@@ -35,4 +38,22 @@ abstract class DebitsAndCreditsDB : RoomDatabase() {
             }
         }
     }
+
+/*    // As a test example
+    private class UsersListCallback (private val scope: CoroutineScope) : RoomDatabase.Callback() {
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            INSTANCE?.let { database ->
+                scope.launch {
+                    var userDao = database.Dao()
+
+                    userDao.deleteUsers()
+
+                    var user = UsersTable(0, "KnightMare")
+                    userDao.insertUser()
+                }
+
+            }
+        }
+    }*/
 }

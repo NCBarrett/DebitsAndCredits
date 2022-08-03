@@ -67,9 +67,13 @@ dependencies {
     // UI
     implementation "com.google.android.material:material:$material_version" // HERE
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4' // HERE
-    /* implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.8.1' */
+    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.8.1'
 
-    // implementation "com.google.code.gson:gson:$gson_version" // NOT HERE
+    implementation "com.google.code.gson:gson:$gson_version" // NOT HERE
+
+    // Firebase
+    implementation "com.google.firebase:firebase-database-ktx:$firebaseVersion"
+    implementation 'com.google.firebase:firebase-database-ktx:16.0.1:15.0.0'
 
     // Testing
     testImplementation "junit:junit:$rootProject.junitVersion" // HERE

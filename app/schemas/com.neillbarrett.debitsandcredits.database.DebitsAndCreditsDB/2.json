@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "8c315a71a8b84c8517f0f85a2869a6f1",
+    "version": 2,
+    "identityHash": "03e15548008ccd2a56b14d0f4e9d93c3",
     "entities": [
       {
         "tableName": "DebitsAndCreditsTable",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`transId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `fkUserId` INTEGER NOT NULL, `Date` INTEGER NOT NULL, `fkPaymentTypeId` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`transId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `fkUserId` INTEGER NOT NULL, `Date` INTEGER NOT NULL, `fkPaymentTypeId` INTEGER NOT NULL, `Debit` INTEGER, `Credit` INTEGER, `Balance` INTEGER NOT NULL, `Comments` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "transId",
@@ -31,6 +31,30 @@
             "columnName": "fkPaymentTypeId",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "Debit",
+            "columnName": "Debit",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Credit",
+            "columnName": "Credit",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "Balance",
+            "columnName": "Balance",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Comments",
+            "columnName": "Comments",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -49,15 +73,6 @@
             ],
             "orders": [],
             "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_DebitsAndCreditsTable_fkUserId_fkPaymentTypeId` ON `${TABLE_NAME}` (`fkUserId`, `fkPaymentTypeId`)"
-          },
-          {
-            "name": "index_DebitsAndCreditsTable_transId",
-            "unique": false,
-            "columnNames": [
-              "transId"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_DebitsAndCreditsTable_transId` ON `${TABLE_NAME}` (`transId`)"
           },
           {
             "name": "index_DebitsAndCreditsTable_fkUserId",
@@ -82,7 +97,7 @@
       },
       {
         "tableName": "UsersTable",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pkUserId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `UserName` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pkUserId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `UserName` TEXT NOT NULL, FOREIGN KEY(`pkUserId`) REFERENCES `DebitsAndCreditsTable`(`fkUserId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "pkUserId",
@@ -104,13 +119,25 @@
           "autoGenerate": true
         },
         "indices": [],
-        "foreignKeys": []
+        "foreignKeys": [
+          {
+            "table": "DebitsAndCreditsTable",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "pkUserId"
+            ],
+            "referencedColumns": [
+              "fkUserId"
+            ]
+          }
+        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8c315a71a8b84c8517f0f85a2869a6f1')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '03e15548008ccd2a56b14d0f4e9d93c3')"
     ]
   }
 }

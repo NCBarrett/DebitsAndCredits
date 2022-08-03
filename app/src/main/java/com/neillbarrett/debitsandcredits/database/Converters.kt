@@ -3,6 +3,7 @@ package com.neillbarrett.debitsandcredits.database
 import androidx.room.TypeConverter
 import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
 import com.google.gson.Gson
+//import com.google.gson.reflect.TypeToken
 import java.sql.Date
 import java.util.*
 import kotlin.collections.ArrayList
@@ -20,8 +21,7 @@ class Converters {
 
     @TypeConverter
     fun listFromString(value: String?): List<String> {
-        val listType = object :
-            TypeToken<ArrayList<String?>?>() {}.type
+        val listType = object : TypeToken<ArrayList<String?>?>() {}.type
         return Gson().fromJson(value, listType)
     }
 

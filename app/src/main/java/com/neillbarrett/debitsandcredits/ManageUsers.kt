@@ -18,7 +18,7 @@ class ManageUsers : AppCompatActivity() {
         setContentView(view)
         //setContentView(R.layout.activity_manage_users)
 
-        listView = findViewById(R.id.lv_ListOfUsers)
+        listView = findViewById(R.id.rec_view_userList)
 
         //val userList =
 

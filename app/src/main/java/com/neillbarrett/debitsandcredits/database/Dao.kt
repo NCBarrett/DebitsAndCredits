@@ -18,6 +18,9 @@ interface Dao {
     @Query("SELECT * FROM UsersTable ORDER BY UserName ASC")
     fun getAllUsers(): Flow<List<UsersTable>>
 
+    @Query("DELETE FROM UsersTable")
+    suspend fun deleteUsers()
+
     // Payment type queries
     /*@Insert
     suspend fun addPaymentType(pymtType: List<Type>) */
