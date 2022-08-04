@@ -27,7 +27,16 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            matchingFallbacks = ['release']
         }
+/*        enterprise {
+            // blah blah
+            matchingFallbacks = ['release']
+        }
+        debug {
+            // blah blah
+            matchingFallbacks = ['debug']
+        }*/
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -73,7 +82,7 @@ dependencies {
 
     // Firebase
     implementation "com.google.firebase:firebase-database-ktx:$firebaseVersion"
-    implementation 'com.google.firebase:firebase-database-ktx:16.0.1:15.0.0'
+    //implementation 'com.google.firebase:firebase-database-ktx:16.0.1:15.0.0'
 
     // Testing
     testImplementation "junit:junit:$rootProject.junitVersion" // HERE

@@ -18,25 +18,15 @@ class ListOfUsers : AppCompatActivity() {
         UserViewModelFactory((application as CreditsAndDebitsApp).repository)
     }
 
-/*    var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-
-            } else {
-
-            }
-    }*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_of_users)
 
         val recyclerView = findViewById<RecyclerView>(R.id.rec_view_userList)
         val adapter = UserListAdapter()
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-
 
         userViewModel.allUsers.observe(this, Observer {users ->
             users?.let { adapter.submitList(it) }
