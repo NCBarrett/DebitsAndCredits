@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.neillbarrett.debitsandcredits.UserListAdapter.UserViewHolder.Companion.create
 import com.neillbarrett.debitsandcredits.database.Dao
 import com.neillbarrett.debitsandcredits.databinding.ActivityManageUsersBinding
@@ -14,7 +15,7 @@ import com.neillbarrett.debitsandcredits.databinding.ActivityManageUsersBinding
 class ManageUsers : AppCompatActivity() {
 
     lateinit var binding: ActivityManageUsersBinding
-    lateinit var listView: ListView
+    lateinit var recyclerView: RecyclerView
     lateinit var editTextAddUser: EditText
     lateinit var newUser: String
 
@@ -26,7 +27,7 @@ class ManageUsers : AppCompatActivity() {
         setContentView(view)
         //setContentView(R.layout.activity_manage_users)
 
-        listView = findViewById(R.id.rec_view_userList)
+        recyclerView = findViewById(R.id.rec_view_userList)
 
         editTextAddUser = findViewById(R.id.et_UserName)
 
