@@ -30,6 +30,14 @@ class Converters {
         val gson = Gson()
         return gson.toJson(list)
     }
+
+/*    @TypeConverter
+    fun fromStringToJSON(stringList: ClothingList): String {
+        return Gson().toJson(stringList)
+    }
+    @TypeConverter
+    fun fromJSONToString(json: String): ClothingList {
+        return Gson().fromJson(json,ClothingList::class.java)*/
 }
 
 /*    @TypeConverter

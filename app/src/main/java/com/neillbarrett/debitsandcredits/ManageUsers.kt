@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ListView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.neillbarrett.debitsandcredits.UserListAdapter.UserViewHolder.Companion.create
-import com.neillbarrett.debitsandcredits.database.Dao
+import com.neillbarrett.debitsandcredits.database.CreditsAndDebitsApp
+import com.neillbarrett.debitsandcredits.database.UsersTable
 import com.neillbarrett.debitsandcredits.databinding.ActivityManageUsersBinding
 
 class ManageUsers : AppCompatActivity() {
@@ -18,6 +18,9 @@ class ManageUsers : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     lateinit var editTextAddUser: EditText
     lateinit var newUser: String
+    private val userViewModel: UserViewModel by viewModels {
+        UserViewModelFactory((application as CreditsAndDebitsApp).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +40,8 @@ class ManageUsers : AppCompatActivity() {
                 Toast.makeText(this, "User name cannot be empty", Toast.LENGTH_SHORT).show()
             } else {
                 newUser = editTextAddUser.text.toString()
-                //UserViewModelFactory.create()
+                userViewModel.insertUser(UsersTable(0, newUser))
+                //userViewModel.insertUser(editTextAddUser.text.toString())
             }
 
         }

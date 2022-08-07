@@ -16,8 +16,10 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
      */
-    fun insertUser(user: List<UsersTable>) = viewModelScope.launch {
-        repository.insertUser(user)
+
+    fun insertUser(usersTable: UsersTable) = viewModelScope.launch {
+        repository.insertUser(usersTable)
+    //repository.insertUser(usersTable = List<UsersTable>())
     //repository.insertUser(UsersTable(0, userName = user.userName))
     }
 }

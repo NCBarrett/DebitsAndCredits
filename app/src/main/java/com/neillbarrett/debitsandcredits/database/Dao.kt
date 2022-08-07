@@ -11,8 +11,8 @@ interface Dao {
 
     // User queries
     @Insert
-    suspend fun insertUser(user: List<UsersTable>)
-    //suspend fun insertUser(user: UsersTable)
+    //suspend fun insertUser(user: List<UsersTable>)
+    suspend fun insertUser(user: UsersTable)
 
     @Transaction
     @Query("SELECT * FROM UsersTable ORDER BY UserName ASC")

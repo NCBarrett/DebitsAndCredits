@@ -18,7 +18,8 @@ class UserRepository(private val Dao: Dao) {
     // off the main thread.
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun insertUser(usersTable: List<UsersTable>) {
+    suspend fun insertUser(usersTable: UsersTable) = Dao.insertUser(usersTable)
+/*    suspend fun insertUser(usersTable: List<UsersTable>) {
         Dao.insertUser(usersTable)
-    }
+    }*/
 }
