@@ -3,10 +3,13 @@ package com.neillbarrett.debitsandcredits
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.neillbarrett.debitsandcredits.database.CreditsAndDebitsApp
 import com.neillbarrett.debitsandcredits.database.UsersTable
@@ -31,8 +34,15 @@ class ManageUsers : AppCompatActivity() {
         //setContentView(R.layout.activity_manage_users)
 
         recyclerView = findViewById(R.id.rec_view_userList)
-
         editTextAddUser = findViewById(R.id.et_UserName)
+
+        val adapter = UserListAdapter()
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        userViewModel.allUsers.observe(this, Observer() {words ->
+            words?.let { adapter.submitList(it) }
+        })
 
         val btnAddUser = findViewById<Button>(R.id.btn_AddUser)
         btnAddUser.setOnClickListener {
@@ -40,8 +50,11 @@ class ManageUsers : AppCompatActivity() {
                 Toast.makeText(this, "User name cannot be empty", Toast.LENGTH_SHORT).show()
             } else {
                 newUser = editTextAddUser.text.toString()
+//                Log.i("Add user button", "Username put into newUser")
                 userViewModel.insertUser(UsersTable(0, newUser))
-                //userViewModel.insertUser(editTextAddUser.text.toString())
+//                Toast.makeText(this, "Username added to table", Toast.LENGTH_SHORT).show()
+//                Log.i("Add user button", "Username added to table")
+
             }
 
         }
