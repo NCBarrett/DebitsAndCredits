@@ -7,12 +7,52 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tv_mainScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="94dp"
+        android:text="@string/main_screen"
+        android:textAllCaps="true"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_UpdateUsers"
+        app:layout_constraintEnd_toEndOf="@+id/btn_UpdateUsers"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/btn_UpdateUsers"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_UpdateUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_users"
+        app:layout_constraintBottom_toTopOf="@+id/btn_History"
+        app:layout_constraintEnd_toEndOf="@+id/btn_History"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/btn_History"
+        app:layout_constraintTop_toBottomOf="@+id/tv_mainScreen" />
+
+    <Button
+        android:id="@+id/btn_History"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/check_history"
+        app:layout_constraintBottom_toTopOf="@+id/btn_UpdateTransactions"
+        app:layout_constraintEnd_toEndOf="@+id/btn_UpdateTransactions"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/btn_UpdateTransactions"
+        app:layout_constraintTop_toBottomOf="@+id/btn_UpdateUsers" />
+
+    <Button
+        android:id="@+id/btn_UpdateTransactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="94dp"
+        android:text="@string/update_transactions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_History" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
