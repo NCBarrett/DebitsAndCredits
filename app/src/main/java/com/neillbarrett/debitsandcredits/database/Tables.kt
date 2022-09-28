@@ -1,4 +1,4 @@
-package com.neillbarrett.debitsandcredits
+package com.neillbarrett.debitsandcredits.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -18,7 +18,7 @@ data class Transactions (
 
 @Entity
 data class UsersTable (
-    @PrimaryKey val pkUser: Int,
+    @PrimaryKey (autoGenerate = true) val pkUser: Int,
     @ColumnInfo val userName: String
     )
 /*    @Relation(
