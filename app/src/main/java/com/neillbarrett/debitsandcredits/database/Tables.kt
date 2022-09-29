@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Relation
+import java.sql.RowId
 
 /*@Entity (tableName = "t_Transactions")
 data class Transactions (
@@ -18,7 +19,7 @@ data class Transactions (
 
 @Entity
 data class UsersTable (
-    @PrimaryKey (autoGenerate = true) val pkUser: Int,
+    @PrimaryKey (autoGenerate = true) val pkUserId: Long = 0L,
     @ColumnInfo val userName: String
     )
 /*    @Relation(
