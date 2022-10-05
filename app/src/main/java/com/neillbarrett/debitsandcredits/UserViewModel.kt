@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class UserViewModel(private val dataSource: Dao, application: Application) : ViewModel() {
+class UserViewModel(private val dataSource: Dao /*, application: Application*/) : ViewModel() {
 
     val database = dataSource
 

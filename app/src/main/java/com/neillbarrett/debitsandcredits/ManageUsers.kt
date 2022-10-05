@@ -19,12 +19,14 @@ class ManageUsers : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_manage_users)
 
+        //Get a reference to the binding object and inflate the view
         binding = ActivityManageUsersBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
+        val adapter = UserListAdapter()
 
-
+        binding.recViewUserList.adapter = adapter
     }
 
 }

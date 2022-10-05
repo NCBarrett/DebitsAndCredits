@@ -4,10 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <!--<variable
+            name="user" type="com.neillbarrett.debitsandcredits.database.UsersTable"
+         <variable name="clickListener" type="com.neillbarrett.debitsandcredits" /> -->
         <variable
-            name="user"
-            type="com.neillbarrett.debitsandcredits.database.UsersTable" />
-        <!-- <variable name="clickListener" type="com.neillbarrett.debitsandcredits" /> -->
+            name="UserViewModel"
+            type="com.neillbarrett.debitsandcredits.UserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
