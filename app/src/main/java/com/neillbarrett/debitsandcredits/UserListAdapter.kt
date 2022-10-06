@@ -20,6 +20,7 @@ class UserListAdapter: RecyclerView.Adapter<TextItemViewHolder>() {
     override fun onBindViewHolder(holder: TextItemViewHolder, position: Int) {
         val item = data[position]
         holder.textView.text = item.userName
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextItemViewHolder {
@@ -27,6 +28,7 @@ class UserListAdapter: RecyclerView.Adapter<TextItemViewHolder>() {
         val view = layoutInflater.inflate(R.layout.activity_list_of_users, parent, false) as TextView
         return TextItemViewHolder(view)
     }
+
 }
 
 class UserListListener(val clickListener: (pkUserId: Long) -> Unit) {

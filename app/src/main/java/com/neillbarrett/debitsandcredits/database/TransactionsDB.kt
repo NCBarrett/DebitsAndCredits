@@ -8,9 +8,7 @@ import androidx.room.TypeConverters
 import kotlinx.coroutines.CoroutineScope
 
 @Database(
-    entities = [UsersTable::class],
-    version = 1,
-    exportSchema = true
+    entities = [UsersTable::class], version = 1, exportSchema = true
 )
 @TypeConverters(Converters::class)
 abstract class DebitsAndCreditsDB : RoomDatabase() {
@@ -32,7 +30,8 @@ abstract class DebitsAndCreditsDB : RoomDatabase() {
                     context.applicationContext,
                     DebitsAndCreditsDB::class.java,
                     "DebitsAndCredits"
-                ).build()
+                ).allowMainThreadQueries()
+                    .build()
                 INSTANCE = instance
                 // return instance
                 instance

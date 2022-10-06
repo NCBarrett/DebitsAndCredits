@@ -2,13 +2,14 @@ package com.neillbarrett.debitsandcredits.database
 
 import androidx.room.*
 import androidx.room.Dao
+import androidx.room.OnConflictStrategy.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface Dao {
 
     // User queries
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertUser(usersTable: UsersTable)
     //suspend fun insertUser(usersTable: UsersTable)
     //suspend fun insertUser(user: List<UsersTable>)
