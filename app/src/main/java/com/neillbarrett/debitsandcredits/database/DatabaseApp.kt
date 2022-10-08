@@ -14,5 +14,5 @@ class CreditsAndDebitsApp : Application() {
 
     //val database by lazy {DebitsAndCreditsDB.getDatabase(this)}
     //val repository by lazy {UserRepository(database.Dao())}
-    val database by lazy {DebitsAndCreditsDB.getDatabase(this, applicationScope)}
+    val database by lazy {DebitsAndCreditsDB.getDatabase(this)}
 }

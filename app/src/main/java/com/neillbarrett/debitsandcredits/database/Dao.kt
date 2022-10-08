@@ -10,12 +10,12 @@ interface Dao {
 
     // User queries
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertUser(usersTable: UsersTable)
+    fun insertUser(user: UsersTable)
     //suspend fun insertUser(usersTable: UsersTable)
     //suspend fun insertUser(user: List<UsersTable>)
 
     @Update
-    fun updateUser(usersTable: UsersTable)
+    fun updateUser(user: UsersTable)
     //suspend fun updateUser(usersTable: UsersTable)
 
     //@Transaction
@@ -23,7 +23,7 @@ interface Dao {
     fun getAllUsers(): Flow<MutableList<UsersTable?>>
 
     @Delete
-    fun deleteUser(usersTable: UsersTable)
+    fun deleteUser(user: UsersTable)
     //suspend fun deleteUser(usersTable: UsersTable)
 
     // Payment type queries
