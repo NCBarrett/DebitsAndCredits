@@ -1,9 +1,7 @@
 package com.neillbarrett.debitsandcredits.database
 
+import androidx.room.*
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -14,12 +12,15 @@ interface Dao {
     //suspend fun insertUser(user: List<UsersTable>)
     suspend fun insertUser(user: UsersTable)
 
+    @Update
+    suspend fun updateUser(user: UsersTable)
+
     @Transaction
     @Query("SELECT * FROM UsersTable ORDER BY UserName ASC")
     fun getAllUsers(): Flow<List<UsersTable>>
 
-    @Query("DELETE FROM UsersTable")
-    suspend fun deleteUsers()
+    @Delete
+    suspend fun deleteUser(user: UsersTable)
 
     // Payment type queries
     /*@Insert

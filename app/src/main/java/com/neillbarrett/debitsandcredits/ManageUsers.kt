@@ -21,9 +21,7 @@ class ManageUsers : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     lateinit var editTextAddUser: EditText
     lateinit var newUser: String
-    private val userViewModel: UserViewModel by viewModels {
-        UserViewModelFactory((application as CreditsAndDebitsApp).repository)
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +31,10 @@ class ManageUsers : AppCompatActivity() {
         setContentView(view)
         //setContentView(R.layout.activity_manage_users)
 
+        val userViewModel: UserViewModel by viewModels {
+            UserViewModelFactory((application as CreditsAndDebitsApp).repository)
+        }
+
         recyclerView = findViewById(R.id.rec_view_userList)
         editTextAddUser = findViewById(R.id.et_UserName)
 
@@ -40,8 +42,8 @@ class ManageUsers : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        userViewModel.allUsers.observe(this, Observer() {words ->
-            words?.let { adapter.submitList(it) }
+        userViewModel.allUsers.observe(this, Observer() {user ->
+            user?.let { adapter.submitList(it) }
         })
 
         val btnAddUser = findViewById<Button>(R.id.btn_AddUser)
@@ -54,9 +56,7 @@ class ManageUsers : AppCompatActivity() {
                 userViewModel.insertUser(UsersTable(0, newUser))
 //                Toast.makeText(this, "Username added to table", Toast.LENGTH_SHORT).show()
 //                Log.i("Add user button", "Username added to table")
-
             }
-
         }
     }
 
