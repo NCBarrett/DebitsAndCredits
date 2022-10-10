@@ -28,8 +28,8 @@ class ListOfUsers : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        userViewModel.allUsers.observe(this, Observer {users ->
+/*        userViewModel.allUsers.observe(this, Observer {users ->
             users?.let { adapter.submitList(it) }
-        })
+        })*/
     }
 }

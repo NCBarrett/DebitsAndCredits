@@ -27,16 +27,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//            matchingFallbacks = ['release']
         }
-/*        enterprise {
-            // blah blah
-            matchingFallbacks = ['release']
-        }
-        debug {
-            // blah blah
-            matchingFallbacks = ['debug']
-        }*/
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -48,6 +39,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 

@@ -22,7 +22,6 @@ class ManageUsers : AppCompatActivity() {
     lateinit var editTextAddUser: EditText
     lateinit var newUser: String
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,6 +38,7 @@ class ManageUsers : AppCompatActivity() {
         editTextAddUser = findViewById(R.id.et_UserName)
 
         val adapter = UserListAdapter()
+        binding.recViewUserList.adapter = adapter
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -57,6 +57,11 @@ class ManageUsers : AppCompatActivity() {
 //                Toast.makeText(this, "Username added to table", Toast.LENGTH_SHORT).show()
 //                Log.i("Add user button", "Username added to table")
             }
+        }
+
+        val btnChangeUser = findViewById<Button>(R.id.btn_ChangeUserName)
+        btnChangeUser.setOnClickListener {
+
         }
     }
 

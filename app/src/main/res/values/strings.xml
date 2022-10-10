@@ -7,4 +7,6 @@
     <string name="list_of_users">List Of Users:</string>
     <string name="type_name">Type name</string>
     <string name="add_user">Add User</string>
+    <string name="textview">TextView</string>
+    <string name="change_name">Change Name</string>
 </resources>
