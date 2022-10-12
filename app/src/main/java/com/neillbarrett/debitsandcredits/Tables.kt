@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Relation
 
-@Entity (tableName = "t_Transactions")
+/*@Entity (tableName = "t_Transactions")
 data class Transactions (
     @PrimaryKey val id: Int,
     @ColumnInfo (name = "fkUser") val userId: Int,
@@ -14,14 +14,16 @@ data class Transactions (
     @ColumnInfo (name = "Debit") val Debit: Long?,
     @ColumnInfo (name = "Credit") val Credit: Long?,
     @ColumnInfo (name = "Balance") val Balance: Long
+)*/
+
+@Entity (tableName = "UsersTable" /*,
+    foreignKeys = [ForeignKey(
+        entity = DebitsAndCreditsTable::class,
+        parentColumns = ["fkUserId"],
+        childColumns = ["pkUserId"],
+        onDelete = CASCADE)] */)
+data class UsersTable (
+    @PrimaryKey (autoGenerate = true)
+    @ColumnInfo (name = "pkUserId") val pkUserId: Int,
+    @ColumnInfo (name = "UserName") val userName: String
 )
-
-@Entity (tableName = "t_Users")
-data class Users (
-    @Relation(
-        parentColumn = "fkUser",
-        entityColumn = "pkId"
-    )
-    val users: List<Users>
-
-        )
