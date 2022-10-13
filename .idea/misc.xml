@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudio/DebitsAndCredits/app/src/main/res/layout/activity_history.xml" value="0.10364583333333334" />
         <entry key="..\:/AndroidStudio/DebitsAndCredits/app/src/main/res/layout/activity_main.xml" value="0.12604166666666666" />
+        <entry key="..\:/AndroidStudio/DebitsAndCredits/app/src/main/res/layout/activity_manage_transactions.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/DebitsAndCredits/app/src/main/res/layout/activity_manage_users.xml" value="0.10364583333333334" />
+        <entry key="..\:/AndroidStudio/DebitsAndCredits/app/src/main/res/layout/activity_user_list.xml" value="0.12135416666666667" />
       </map>
     </option>
   </component>

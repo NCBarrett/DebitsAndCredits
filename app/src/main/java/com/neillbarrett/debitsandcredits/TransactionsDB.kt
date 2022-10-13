@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [UsersTable::class], version = 1, exportSchema = true)
 abstract class TransactionsDB : RoomDatabase() {
+
     abstract val userListDao: DebitsAndCreditsDao
 
     companion object{
