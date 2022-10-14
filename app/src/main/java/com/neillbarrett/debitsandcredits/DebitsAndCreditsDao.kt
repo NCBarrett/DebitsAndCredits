@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface DebitsAndCreditsDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertUser(user: UsersTable)
 
     @Update

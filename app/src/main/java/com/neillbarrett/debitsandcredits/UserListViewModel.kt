@@ -9,5 +9,12 @@ import kotlinx.coroutines.launch
 class UserListViewModel(
     val database: DebitsAndCreditsDao, application: Application) : AndroidViewModel(application) {
 
+    private val users = database.getAllUsers()
 
+    fun addUser() {
+
+        viewModelScope.launch {
+
+        }
+    }
 }
