@@ -31,7 +31,8 @@ abstract class DebitsAndCreditsDB : RoomDatabase() {
                     context.applicationContext,
                     DebitsAndCreditsDB::class.java,
                     "DebitsAndCredits"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 // return instance
                 instance
