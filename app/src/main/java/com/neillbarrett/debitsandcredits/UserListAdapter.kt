@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.neillbarrett.debitsandcredits.database.UsersTable
+import com.neillbarrett.debitsandcredits.userClickListener
 
-class UserListAdapter : ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(UsersComparator()) {
+class UserListAdapter() : ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(UsersComparator()) {
 
-    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class UserViewHolder(listener: userClickListener, itemView: View) : RecyclerView.ViewHolder(itemView){
         private val userView: TextView = itemView.findViewById(R.id.rec_view_userList)
 
         fun bind(text: String?) {
@@ -22,7 +23,7 @@ class UserListAdapter : ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(
             fun create(parent: ViewGroup) : UserViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.activity_list_of_users, parent, false)
-                return UserViewHolder(view)
+                return UserViewHolder()
             }
         }
     }

@@ -5,6 +5,7 @@
         <variable
             name="userName"
             type="com.neillbarrett.debitsandcredits.database.UsersTable" />
+        <!-- <variable name="userViewModel" type="com.neillbarrett.debitsandcredits.UserListAdapter" /> -->
     </data>
 
     <LinearLayout

@@ -64,5 +64,9 @@ class ManageUsers : AppCompatActivity() {
 
         }
     }
-
 }
+
+/*
+interface userClickListener {
+    fun onUserClick(position: Int)
+}*/
