@@ -8,24 +8,43 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.neillbarrett.debitsandcredits.database.UsersTable
-import com.neillbarrett.debitsandcredits.userClickListener
+import com.neillbarrett.debitsandcredits.databinding.ActivityManageUsersBinding
+//import com.neillbarrett.debitsandcredits.userClickListener
 
-class UserListAdapter() : ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(UsersComparator()) {
+class UserListAdapter(val userSelect: (UsersTable?) -> Unit) :
+    ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(UsersComparator()) {
 
-    class UserViewHolder(listener: userClickListener, itemView: View) : RecyclerView.ViewHolder(itemView){
-        private val userView: TextView = itemView.findViewById(R.id.rec_view_userList)
+    //private
 
-        fun bind(text: String?) {
-            userView.text = text
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+        val current = getItem(position)
+        holder.bind(current, userSelect)
+        //
+    }
+
+    class UserViewHolder(private val binding: ActivityManageUsersBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(usersTable: UsersTable?, userSelect: (UsersTable?) -> Unit) {
+
+            binding.root.setOnClickListener( View.OnClickListener {
+                userSelect(usersTable)
+                //userSelect()
+            })
         }
 
         companion object {
             fun create(parent: ViewGroup) : UserViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.activity_list_of_users, parent, false)
-                return UserViewHolder()
+                    .inflate(R.layout.activity_manage_users, parent, false)
+                return UserViewHolder(ActivityManageUsersBinding.bind(view))
             }
         }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.activity_manage_users, parent, false)
+        return UserViewHolder.create(parent)
     }
 
     class UsersComparator : DiffUtil.ItemCallback<UsersTable>() {
@@ -38,14 +57,12 @@ class UserListAdapter() : ListAdapter<UsersTable, UserListAdapter.UserViewHolder
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        return UserViewHolder.create(parent)
-    }
-
-    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val current = getItem(position)
-        holder.bind(current.userName)
-    }
 }
 
+/*    class UserViewHolder(listener: userClickListener, itemView: View) : RecyclerView.ViewHolder(itemView){
+        private val userView: TextView = itemView.findViewById(R.id.rec_view_userList)
 
+        fun bind(text: String?) {
+            userView.text = text
+        }
+    }*/

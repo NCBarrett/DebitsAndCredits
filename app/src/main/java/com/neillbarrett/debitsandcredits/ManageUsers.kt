@@ -37,6 +37,8 @@ class ManageUsers : AppCompatActivity() {
         recyclerView = findViewById(R.id.rec_view_userList)
         editTextAddUser = findViewById(R.id.et_UserName)
 
+/*        val pkId: Int = 0
+        val userName: String*/
         val adapter = UserListAdapter()
         binding.recViewUserList.adapter = adapter
         recyclerView.adapter = adapter
@@ -64,9 +66,5 @@ class ManageUsers : AppCompatActivity() {
 
         }
     }
-}
 
-/*
-interface userClickListener {
-    fun onUserClick(position: Int)
-}*/
+}
