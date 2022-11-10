@@ -11,15 +11,13 @@ import com.neillbarrett.debitsandcredits.database.UsersTable
 import com.neillbarrett.debitsandcredits.databinding.ActivityManageUsersBinding
 //import com.neillbarrett.debitsandcredits.userClickListener
 
-class UserListAdapter(val userSelect: (UsersTable?) -> Unit) :
+class UserListAdapter(private val userSelect: (UsersTable?) -> Unit) :
     ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(UsersComparator()) {
-
-    //private
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current, userSelect)
-        //
+
     }
 
     class UserViewHolder(private val binding: ActivityManageUsersBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -28,7 +26,7 @@ class UserListAdapter(val userSelect: (UsersTable?) -> Unit) :
 
             binding.root.setOnClickListener( View.OnClickListener {
                 userSelect(usersTable)
-                //userSelect()
+                binding.etEditName.setText(R.layout.activity_list_of_users.toString())
             })
         }
 
@@ -56,7 +54,6 @@ class UserListAdapter(val userSelect: (UsersTable?) -> Unit) :
             return oldItem.userName == newItem.userName
         }
     }
-
 }
 
 /*    class UserViewHolder(listener: userClickListener, itemView: View) : RecyclerView.ViewHolder(itemView){

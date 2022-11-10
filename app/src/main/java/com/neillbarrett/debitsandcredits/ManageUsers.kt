@@ -20,6 +20,7 @@ class ManageUsers : AppCompatActivity() {
     lateinit var binding: ActivityManageUsersBinding
     lateinit var recyclerView: RecyclerView
     lateinit var editTextAddUser: EditText
+    lateinit var editTextChangeUser: EditText
     lateinit var newUser: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +37,8 @@ class ManageUsers : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.rec_view_userList)
         editTextAddUser = findViewById(R.id.et_UserName)
+        editTextChangeUser = findViewById(R.id.et_Edit_Name)
 
-/*        val pkId: Int = 0
-        val userName: String*/
         val adapter = UserListAdapter()
         binding.recViewUserList.adapter = adapter
         recyclerView.adapter = adapter
@@ -63,7 +63,16 @@ class ManageUsers : AppCompatActivity() {
 
         val btnChangeUser = findViewById<Button>(R.id.btn_ChangeUserName)
         btnChangeUser.setOnClickListener {
+            if (recyclerView.getChildAdapterPosition(it) == -1) {
+                Toast.makeText(this, "Select a name.", Toast.LENGTH_SHORT).show()
+            } else {
+                if (TextUtils.isEmpty(editTextChangeUser.text)) {
+                    Toast.makeText(this, "Select a name.", Toast.LENGTH_SHORT).show()
+                }
+            /*else {
 
+                }*/
+            }
         }
     }
 
