@@ -22,6 +22,8 @@ class ManageUsers : AppCompatActivity() {
     lateinit var editTextAddUser: EditText
     lateinit var editTextChangeUser: EditText
     lateinit var newUser: String
+    lateinit var userSelect: ((UsersTable?) -> Unit)
+    var position: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +41,7 @@ class ManageUsers : AppCompatActivity() {
         editTextAddUser = findViewById(R.id.et_UserName)
         editTextChangeUser = findViewById(R.id.et_Edit_Name)
 
-        val adapter = UserListAdapter()
+        val adapter = UserListAdapter(userSelect)
         binding.recViewUserList.adapter = adapter
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -66,12 +68,14 @@ class ManageUsers : AppCompatActivity() {
             if (recyclerView.getChildAdapterPosition(it) == -1) {
                 Toast.makeText(this, "Select a name.", Toast.LENGTH_SHORT).show()
             } else {
-                if (TextUtils.isEmpty(editTextChangeUser.text)) {
-                    Toast.makeText(this, "Select a name.", Toast.LENGTH_SHORT).show()
+                if (editTextChangeUser.text.toString() == recyclerView.adapter.toString()) {
+                    Toast.makeText(this, "Name has not been changed.", Toast.LENGTH_SHORT).show()
+                } else {
+                    //val rvItemId: Int = 0
+                    val rvItemRecId: Long
+                    rvItemRecId = adapter.getItemId(position.toInt())
+                    userViewModel.updateUser(UsersTable(rvItemRecId.toInt(), adapter.toString()))
                 }
-            /*else {
-
-                }*/
             }
         }
     }
