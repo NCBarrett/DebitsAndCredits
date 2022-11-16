@@ -17,7 +17,6 @@ class UserListAdapter(private val userSelect: (UsersTable?) -> Unit) :
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current, userSelect)
-
     }
 
     class UserViewHolder(private val binding: ActivityManageUsersBinding) : RecyclerView.ViewHolder(binding.root) {

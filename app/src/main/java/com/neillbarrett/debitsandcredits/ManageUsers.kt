@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,8 @@ class ManageUsers : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         binding = ActivityManageUsersBinding.inflate(layoutInflater)
         val view = binding.root
@@ -71,10 +74,10 @@ class ManageUsers : AppCompatActivity() {
                 if (editTextChangeUser.text.toString() == recyclerView.adapter.toString()) {
                     Toast.makeText(this, "Name has not been changed.", Toast.LENGTH_SHORT).show()
                 } else {
-                    //val rvItemId: Int = 0
-                    val rvItemRecId: Long
+                    Toast.makeText(this, "Name would have been changed.", Toast.LENGTH_SHORT).show()
+                    /*val rvItemRecId: Long
                     rvItemRecId = adapter.getItemId(position.toInt())
-                    userViewModel.updateUser(UsersTable(rvItemRecId.toInt(), adapter.toString()))
+                    userViewModel.updateUser(UsersTable(rvItemRecId.toInt(), adapter.toString()))*/
                 }
             }
         }

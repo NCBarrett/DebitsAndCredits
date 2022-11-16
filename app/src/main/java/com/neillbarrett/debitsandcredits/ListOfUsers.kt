@@ -22,13 +22,13 @@ class ListOfUsers : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_of_users)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.rec_view_userList)
+/*        val recyclerView = findViewById<RecyclerView>(R.id.rec_view_userList)
         val adapter = UserListAdapter()
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-/*        userViewModel.allUsers.observe(this, Observer {users ->
+        userViewModel.allUsers.observe(this, Observer {users ->
             users?.let { adapter.submitList(it) }
         })*/
     }
