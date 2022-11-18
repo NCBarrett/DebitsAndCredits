@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.neillbarrett.debitsandcredits.database.UsersTable
 import com.neillbarrett.debitsandcredits.databinding.ActivityManageUsersBinding
-//import com.neillbarrett.debitsandcredits.userClickListener
 
 class UserListAdapter(private val userSelect: (UsersTable?) -> Unit) :
     ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(UsersComparator()) {
@@ -24,7 +24,9 @@ class UserListAdapter(private val userSelect: (UsersTable?) -> Unit) :
         fun bind(usersTable: UsersTable?, userSelect: (UsersTable?) -> Unit) {
 
             binding.root.setOnClickListener( View.OnClickListener {
+                //val nameSelected = userSelect(usersTable)
                 userSelect(usersTable)
+                //need to assign the result of the clicklistener to the editText
                 binding.etEditName.setText(R.layout.activity_list_of_users.toString())
             })
         }
@@ -54,11 +56,3 @@ class UserListAdapter(private val userSelect: (UsersTable?) -> Unit) :
         }
     }
 }
-
-/*    class UserViewHolder(listener: userClickListener, itemView: View) : RecyclerView.ViewHolder(itemView){
-        private val userView: TextView = itemView.findViewById(R.id.rec_view_userList)
-
-        fun bind(text: String?) {
-            userView.text = text
-        }
-    }*/

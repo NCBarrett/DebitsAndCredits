@@ -3,12 +3,10 @@ package com.neillbarrett.debitsandcredits
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,13 +21,11 @@ class ManageUsers : AppCompatActivity() {
     lateinit var editTextAddUser: EditText
     lateinit var editTextChangeUser: EditText
     lateinit var newUser: String
-    lateinit var userSelect: ((UsersTable?) -> Unit)
+    var userSelect: ((UsersTable?) -> Unit) = {}
     var position: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
 
         binding = ActivityManageUsersBinding.inflate(layoutInflater)
         val view = binding.root
@@ -82,5 +78,4 @@ class ManageUsers : AppCompatActivity() {
             }
         }
     }
-
 }
