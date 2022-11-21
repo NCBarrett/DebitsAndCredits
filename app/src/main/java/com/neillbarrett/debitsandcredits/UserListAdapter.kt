@@ -3,6 +3,7 @@ package com.neillbarrett.debitsandcredits
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
@@ -19,28 +20,30 @@ class UserListAdapter(private val userSelect: (UsersTable?) -> Unit) :
         holder.bind(current, userSelect)
     }
 
-    class UserViewHolder(private val binding: ActivityManageUsersBinding) : RecyclerView.ViewHolder(binding.root) {
+    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(usersTable: UsersTable?, userSelect: (UsersTable?) -> Unit) {
 
-            binding.root.setOnClickListener( View.OnClickListener {
-                //val nameSelected = userSelect(usersTable)
-                userSelect(usersTable)
+            itemView.setOnClickListener { View.OnClickListener {
+/*                if (View.) { }*/
+
+                val nameSelected = userSelect(usersTable)
+                //userSelect(usersTable)
                 //need to assign the result of the clicklistener to the editText
-                binding.etEditName.setText(R.layout.activity_list_of_users.toString())
-            })
+                //binding.etEditName.setText(R.layout.activity_list_of_users.toString())
+            }}
         }
 
         companion object {
             fun create(parent: ViewGroup) : UserViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.activity_manage_users, parent, false)
-                return UserViewHolder(ActivityManageUsersBinding.bind(view))
+                return UserViewHolder(view)
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListAdapter.UserViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.activity_manage_users, parent, false)
         return UserViewHolder.create(parent)

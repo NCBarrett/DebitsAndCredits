@@ -37,13 +37,13 @@ class ManageUsers : AppCompatActivity() {
         }
 
         recyclerView = findViewById(R.id.rec_view_userList)
-        editTextAddUser = findViewById(R.id.et_UserName)
+        editTextAddUser = findViewById(R.id.et_AddUser)
         editTextChangeUser = findViewById(R.id.et_Edit_Name)
 
         val adapter = UserListAdapter(userSelect)
         binding.recViewUserList.adapter = adapter
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        //recyclerView.layoutManager = LinearLayoutManager(this)
 
         userViewModel.allUsers.observe(this, Observer() {user ->
             user?.let { adapter.submitList(it) }
@@ -64,18 +64,19 @@ class ManageUsers : AppCompatActivity() {
 
         val btnChangeUser = findViewById<Button>(R.id.btn_ChangeUserName)
         btnChangeUser.setOnClickListener {
-            if (recyclerView.getChildAdapterPosition(it) == -1) {
+            Toast.makeText(this, "Selected position is ${recyclerView.getChildAdapterPosition(it)}", Toast.LENGTH_SHORT).show()
+/*            if (recyclerView.getChildAdapterPosition(it) == -1) {
                 Toast.makeText(this, "Select a name.", Toast.LENGTH_SHORT).show()
             } else {
                 if (editTextChangeUser.text.toString() == recyclerView.adapter.toString()) {
                     Toast.makeText(this, "Name has not been changed.", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Name would have been changed.", Toast.LENGTH_SHORT).show()
-                    /*val rvItemRecId: Long
+                    val rvItemRecId: Long
                     rvItemRecId = adapter.getItemId(position.toInt())
-                    userViewModel.updateUser(UsersTable(rvItemRecId.toInt(), adapter.toString()))*/
+                    userViewModel.updateUser(UsersTable(rvItemRecId.toInt(), adapter.toString()))
                 }
-            }
+            }*/
         }
     }
 }
