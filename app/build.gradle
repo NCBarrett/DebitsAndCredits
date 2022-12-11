@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.neillbarrett.debitsandcredits"
-        minSdk 21
-        targetSdk 32
+        minSdk 22 // 21
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -68,7 +68,7 @@ dependencies {
     // UI
     implementation "com.google.android.material:material:$material_version" // HERE
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4' // HERE
-    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.8.1'
+    implementation "com.google.firebase:firebase-crashlytics-buildtools:$fb_crashlyticsVersion"
 
     implementation "com.google.code.gson:gson:$gson_version" // NOT HERE
 
