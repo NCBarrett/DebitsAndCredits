@@ -2,7 +2,7 @@
     <string name="app_name">DebitsAndCredits</string>
     <string name="main_screen">Main screen</string>
     <string name="update_transactions">Update Transactions</string>
-    <string name="update_users">Update Users</string>
+    <string name="update_users">Manage Users</string>
     <string name="check_history">Check History</string>
     <string name="list_of_users">List Of Users:</string>
     <string name="type_name">Type name</string>

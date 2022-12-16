@@ -3,6 +3,7 @@ package com.neillbarrett.debitsandcredits
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -23,6 +24,7 @@ class ManageUsers : AppCompatActivity() {
     lateinit var newUser: String
     var userSelect: ((UsersTable?) -> Unit) = {}
     var position: Long = 0
+    val inWhichActivity: String = "In ManageUsers"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,7 @@ class ManageUsers : AppCompatActivity() {
         setContentView(view)
         //setContentView(R.layout.activity_manage_users)
 
+        Log.w(inWhichActivity, "Setting up userViewModel & repository")
         val userViewModel: UserViewModel by viewModels {
             UserViewModelFactory((application as CreditsAndDebitsApp).repository)
         }
@@ -43,27 +46,31 @@ class ManageUsers : AppCompatActivity() {
         val adapter = UserListAdapter(userSelect)
         binding.recViewUserList.adapter = adapter
         recyclerView.adapter = adapter
-        //recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         userViewModel.allUsers.observe(this, Observer() {user ->
+            Log.w(inWhichActivity,"Starting Observer")
             user?.let { adapter.submitList(it) }
+            Log.w(inWhichActivity, "Started Observer")
         })
 
         val btnAddUser = findViewById<Button>(R.id.btn_AddUser)
         btnAddUser.setOnClickListener {
+            Log.w(inWhichActivity,"Started btnAddUser.setOnClickListener")
             if (TextUtils.isEmpty(editTextAddUser.text)) {
                 Toast.makeText(this, "User name cannot be empty", Toast.LENGTH_SHORT).show()
             } else {
                 newUser = editTextAddUser.text.toString()
-//                Log.i("Add user button", "Username put into newUser")
+//                Log.w("Add user button", "Username put into newUser")
                 userViewModel.insertUser(UsersTable(0, newUser))
 //                Toast.makeText(this, "Username added to table", Toast.LENGTH_SHORT).show()
-//                Log.i("Add user button", "Username added to table")
+//                Log.w("Add user button", "Username added to table")
             }
         }
 
         val btnChangeUser = findViewById<Button>(R.id.btn_ChangeUserName)
         btnChangeUser.setOnClickListener {
+            Log.w(inWhichActivity,"Started btnChangeUser.setOnClickListener")
             Toast.makeText(this, "Selected position is ${recyclerView.getChildAdapterPosition(it)}", Toast.LENGTH_SHORT).show()
 /*            if (recyclerView.getChildAdapterPosition(it) == -1) {
                 Toast.makeText(this, "Select a name.", Toast.LENGTH_SHORT).show()
