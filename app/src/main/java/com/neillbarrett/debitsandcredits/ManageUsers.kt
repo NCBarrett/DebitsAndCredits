@@ -43,6 +43,7 @@ class ManageUsers : AppCompatActivity() {
         editTextAddUser = findViewById(R.id.et_AddUser)
         editTextChangeUser = findViewById(R.id.et_Edit_Name)
 
+        //var llm = LinearLayoutManager(this)
         val adapter = UserListAdapter(userSelect)
         binding.recViewUserList.adapter = adapter
         recyclerView.adapter = adapter

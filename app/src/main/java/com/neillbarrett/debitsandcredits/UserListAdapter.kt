@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.neillbarrett.debitsandcredits.database.UsersTable
 import com.neillbarrett.debitsandcredits.databinding.ActivityManageUsersBinding
 
-val inAdapter: String = "In UserListAdapter: "
+val inAdapter: String = "In UserListAdapter "
 
 class UserListAdapter(private val userSelect: (UsersTable?) -> Unit) :
     ListAdapter<UsersTable, UserListAdapter.UserViewHolder>(UsersComparator()) {
